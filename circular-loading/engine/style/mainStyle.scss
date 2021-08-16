@@ -1,0 +1,91 @@
+@mixin centerItems {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+html,
+body,
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #252629;
+    width: 100vw;
+    min-height: 100vh;
+    position: fixed;
+    @include centerItems();
+}
+
+.circle {
+    width: 200px;
+    height: 200px;
+    border: 5px solid rgba(42, 192, 132, .08);
+    border-radius: 50%;
+    overflow: hidden;
+    @include centerItems();
+    align-items: flex-end;
+    position: relative;
+}
+
+.inner {
+    width: 100%;
+    height: 0px;
+    background-color: rgba(42, 192, 132, .1);
+    border-top-right-radius: 50%;
+    border-top-left-radius: 50%;
+}
+
+.percent-container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+    font-weight: lighter;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    user-select: none;
+    .percent {
+        font-size: 1.1rem;
+    }
+}
+
+@keyframes startLoading {
+    0% {
+        height: 0px;
+        background-color: rgba(42, 192, 132, .1);
+    }
+    100% {
+        height: 200px;
+        background-color: rgba(42, 192, 132, .3);
+    }
+}
+
+@keyframes changeOpacityBorder {
+    0% {
+        border-color: rgba(42, 192, 132, .08);
+    }
+    100% {
+        border-color: rgba(42, 192, 132, .7);
+    }
+}
+
+.startLoading {
+    animation-name: startLoading;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    animation-duration: 4s;
+}
+
+.borderOpacity {
+    animation-name: changeOpacityBorder;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    animation-duration: 2s;
+}
